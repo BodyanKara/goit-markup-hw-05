@@ -169,6 +169,7 @@ img{
 }
 
 .site-nav .link{
+    position: relative;
     color: var(--secondary-text-color);
     font-weight: 500;
     font-size: 14px;
@@ -178,6 +179,23 @@ img{
     padding-top: 6px;
     padding-bottom: 6px;
     transition: color 250ms var(--time-animation);
+}
+.site-nav .link::after{
+    position:absolute;
+    bottom: -28px;
+    left: 0;
+    content: "";
+    background-color: var(--accent-color);
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    opacity: 0;
+    transform: scaleX(0);
+    transition: opacity 250ms var(--time-animation),transform 250ms var(--time-animation);
+}
+.site-nav .link:hover::after{
+    opacity: 1;
+    transform: scaleX(1);
 }
 .inhead .item:not(:last-child){
     margin-right:50px ;
@@ -502,6 +520,7 @@ img{
 }
 
 .filter-btn{
+    background-color: #F5F4FA;
     display: inline-block;
     color: var(--secondary-text-color);
     cursor: pointer;
@@ -514,7 +533,7 @@ img{
     border: 0;
     border-radius: 4px;
     padding: 6px 22px;
-    transition: background-color 250ms var(--time-animation);
+    transition: background-color 250ms var(--time-animation),color 250ms var(--time-animation),box-shadow 250ms var(--time-animation);
 }
 .filter-list .item:not(:last-child){
     margin-right: 8px;
@@ -550,7 +569,7 @@ img{
     letter-spacing: 0.03em;
     color: #EEEEEE;
     text-decoration: none;
-    transition: color 250ms var(--time-animation);
+    transition: box-shadow 250ms var(--time-animation);
 }
 .content-list .link:hover,
 .content-list .link:focus{
@@ -562,21 +581,23 @@ line-height: 2;
 letter-spacing: 0.06em;
 color: var(--secondary-text-color); 
 }
-.content-face{
+.content-box{
     position: relative;
+    overflow: hidden;
+    
 }
-.content-face::before{
+.content-face{
     position: absolute;
-    display: inline-block;
-    content: "";
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background-color:rgba(33, 150, 243, 0.9);
-    opacity: 0;
-    transition: opacity 250ms;
+    transform: translateY(100%);
+    transition: transform 250ms var(--time-animation);
 }
-.content-list .link:hover .content-face::before{
-    opacity: 1;
+.content-list .link:hover .content-face{
+    transform: translateY(0);
 }
 .content-text{
     position: absolute;
@@ -589,7 +610,6 @@ color: var(--secondary-text-color);
     letter-spacing: 0.03em;
     color: #fff;
     transform: translate(-50%,-50%);
-    transition: opacity 500ms;
 }
 .content-list .link:hover .content-text,
 .content-list .link:focus .content-text{
