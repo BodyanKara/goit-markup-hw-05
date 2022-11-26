@@ -201,7 +201,7 @@ img{
         bottom: -28px;
         left: 0;
         content: "";
-        background-color: var(--accent-color);
+        background-color: lightblue;
         width: 100%;
         height: 4px;
         border-radius: 2px;
